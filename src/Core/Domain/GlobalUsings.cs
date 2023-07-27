@@ -1,0 +1,1 @@
+﻿global using DreamWedds.Manager.Domain.Common.Contracts;

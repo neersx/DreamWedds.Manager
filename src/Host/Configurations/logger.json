@@ -1,0 +1,8 @@
+{
+  "LoggerSettings": {
+    "AppName": "DreamWedds.Manager",
+    "ElasticSearchUrl": "http://localhost:9200",
+    "WriteToFile": true,
+    "StructuredConsoleLogging": false
+  }
+}

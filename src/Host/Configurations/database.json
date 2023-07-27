@@ -1,0 +1,6 @@
+{
+  "DatabaseSettings": {
+    "DBProvider": "mssql",
+    "DefaultConnection": "Server=162.0.222.209;Database=FshDb;User=sa;Password=Krishna@2021;Trusted_Connection=False;Encrypt=False;TrustServerCertificate=True;"
+  }
+}

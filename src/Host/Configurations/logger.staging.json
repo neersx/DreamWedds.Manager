@@ -1,0 +1,7 @@
+{
+  "LoggerSettings": {
+    "AppName": "DreamWedds.Manager",
+    "WriteToFile": false,
+    "StructuredConsoleLogging": true
+  }
+}

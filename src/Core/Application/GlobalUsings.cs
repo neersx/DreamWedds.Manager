@@ -1,0 +1,17 @@
+global using Ardalis.Specification;
+global using FluentValidation;
+global using DreamWedds.Manager.Application.Common.Events;
+global using DreamWedds.Manager.Application.Common.Exceptions;
+global using DreamWedds.Manager.Application.Common.FileStorage;
+global using DreamWedds.Manager.Application.Common.Interfaces;
+global using DreamWedds.Manager.Application.Common.Models;
+global using DreamWedds.Manager.Application.Common.Persistence;
+global using DreamWedds.Manager.Application.Common.Specification;
+global using DreamWedds.Manager.Application.Common.Validation;
+global using DreamWedds.Manager.Domain.Catalog;
+global using DreamWedds.Manager.Domain.Common;
+global using DreamWedds.Manager.Domain.Common.Contracts;
+global using DreamWedds.Manager.Shared.Notifications;
+global using MediatR;
+global using Microsoft.Extensions.Localization;
+global using Microsoft.Extensions.Logging;
