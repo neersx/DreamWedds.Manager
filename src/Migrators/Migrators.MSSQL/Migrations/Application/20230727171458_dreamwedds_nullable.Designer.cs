@@ -4,6 +4,7 @@ using DreamWedds.Manager.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Migrators.MSSQL.Migrations.Application
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230727171458_dreamwedds_nullable")]
+    partial class dreamwedds_nullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +50,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -101,7 +104,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -171,7 +174,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -241,7 +244,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -303,7 +306,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -377,7 +380,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsHtml")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -448,7 +451,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -510,7 +513,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -562,7 +565,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -637,7 +640,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -707,7 +710,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -789,7 +792,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -836,7 +839,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsMainQue")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -897,7 +900,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -945,7 +948,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1018,7 +1021,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsGroom")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1081,7 +1084,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1129,7 +1132,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1175,7 +1178,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsImage")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1246,7 +1249,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1323,7 +1326,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1419,7 +1422,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1503,7 +1506,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1543,7 +1546,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1614,7 +1617,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsHtml")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1668,7 +1671,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1749,7 +1752,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1826,7 +1829,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1894,7 +1897,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -1965,7 +1968,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsSingleSide")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -2013,7 +2016,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -2093,7 +2096,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -2151,7 +2154,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsLoveMarriage")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -2236,7 +2239,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -2301,7 +2304,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")
@@ -2399,7 +2402,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("IsMultiplePage")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModifiedOn")

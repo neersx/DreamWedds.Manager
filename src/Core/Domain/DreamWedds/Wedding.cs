@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DreamWedds.Manager.Domain.Entities.DreamWedds
 {
-    public partial class Wedding : AuditableEntity<int>
+    public partial class Wedding : AuditableEntity<int>, IAggregateRoot
     {
         public Wedding()
         {
@@ -20,19 +20,19 @@ namespace DreamWedds.Manager.Domain.Entities.DreamWedds
         public string Title { get; set; }
         public int WeddingStyle { get; set; }
         [MaxLength(500)]
-        public string IconUrl { get; set; }
+        public string? IconUrl { get; set; }
         public int? TemplateId { get; set; }
         public bool IsLoveMarriage { get; set; }
         public int? UserId { get; set; }
         public bool IsActive { get; set; }
         [MaxLength(500)]
-        public string BackgroundImage { get; set; }
+        public string? BackgroundImage { get; set; }
         [MaxLength(500)]
-        public string Quote { get; set; }
+        public string? Quote { get; set; }
         [MaxLength(250)]
-        public string FbPageUrl { get; set; }
+        public string? FbPageUrl { get; set; }
         [MaxLength(250)]
-        public string VideoUrl { get; set; }
+        public string? VideoUrl { get; set; }
         public virtual TemplateMaster Template { get; set; }
         public virtual ICollection<BrideAndMaid> BrideAndMaids { get; set; }
         public virtual ICollection<GroomAndMan> GroomAndMen { get; set; }
