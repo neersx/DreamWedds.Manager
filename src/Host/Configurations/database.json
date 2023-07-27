@@ -1,8 +1,6 @@
 {
   "DatabaseSettings": {
-    "DBProvider1": "mssql",
-    "DefaultConnection": "Server=162.0.222.209;Database=FshDb;User=sa;Password=Krishna@2021;Trusted_Connection=False;Encrypt=False;TrustServerCertificate=True;",
-    "DBProvider": "postgresql",
-    "ConnectionString": "Host=localhost;Port=5432;Database=fshDb;Username=postgres;Password=Krishna@2021;Include Error Detail=true"
+    "DBProvider": "mssql",
+    "ConnectionString": "Server=162.0.222.209;Database=FshDb;User=sa;Password=Krishna@2021;Trusted_Connection=False;Encrypt=False;TrustServerCertificate=True;"
   }
 }
