@@ -30,6 +30,30 @@ namespace DreamWedds.Manager.Domain.Entities.DreamWedds
         public virtual ICollection<MetaTags> MetaTags { get; set; }
         public virtual ICollection<BlogComments> Comments { get; set; }
 
+        public Blog(string title, string description, int type, string? imagePath)
+        {
+            BlogName = title.Replace(" ", "-").ToLower();
+            Title = title;
+            Content = description;
+            BlogType = type;
+            ImageUrl = imagePath;
+        }
+
+        public Blog Update(string? name, string? description, int? type,  string? imagePath)
+        {
+            if (name is not null && BlogName?.Equals(name) is not true) BlogName = name;
+            if (description is not null && Content?.Equals(description) is not true) Content = description;
+            if (type.HasValue && BlogType != type) BlogType = BlogType;
+            if (imagePath is not null && ImageUrl?.Equals(imagePath) is not true) ImageUrl = imagePath;
+            return this;
+        }
+
+        public Blog ClearImagePath()
+        {
+            ImageUrl = string.Empty;
+            return this;
+        }
+
     }
     public class BlogComments : AuditableEntity, IAggregateRoot
     {

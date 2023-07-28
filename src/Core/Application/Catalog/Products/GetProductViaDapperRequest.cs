@@ -1,6 +1,4 @@
-﻿using Mapster;
-
-namespace DreamWedds.Manager.Application.Catalog.Products;
+﻿namespace DreamWedds.Manager.Application.Catalog.Products;
 
 public class GetProductViaDapperRequest : IRequest<ProductDto>
 {

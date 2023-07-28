@@ -1,4 +1,4 @@
-﻿namespace DreamWedds.Manager.Application.Blog;
+﻿namespace DreamWedds.Manager.Application.Blogs;
 
 public class SearchBlogRequest : PaginationFilter, IRequest<PaginationResponse<BlogDto>>
 {
