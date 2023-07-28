@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DreamWedds.Manager.Domain.Entities.DreamWedds
 {
-    public class TemplateMaster : AuditableEntity<int>
+    public class TemplateMaster : AuditableEntity<int>, IAggregateRoot
     {
         public TemplateMaster()
         {

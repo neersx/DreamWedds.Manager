@@ -396,11 +396,9 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.BrideAndMaid", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("About")
                         .HasMaxLength(1250)
@@ -466,8 +464,8 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<int?>("RelationWithBride")
                         .HasColumnType("int");
 
-                    b.Property<int>("WeddingId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("WeddingId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -658,24 +656,19 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.EventVenue", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("BannerImageUrl")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -692,12 +685,10 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("GoogleMapUrl")
-                        .IsRequired()
                         .HasMaxLength(1500)
                         .HasColumnType("nvarchar(1500)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -714,7 +705,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Mobile")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -724,32 +714,27 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("OwnerName")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("PinCode")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("State")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Website")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int?>("WeddingEventId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("WeddingEventId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -816,7 +801,8 @@ namespace Migrators.MSSQL.Migrations.Application
 
                     b.Property<string>("Answer")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("uniqueidentifier");
@@ -847,14 +833,13 @@ namespace Migrators.MSSQL.Migrations.Application
 
                     b.Property<string>("Question")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int?>("Sequence")
                         .HasColumnType("int");
 
                     b.Property<string>("Website")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -961,14 +946,11 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.GroomAndMan", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("About")
-                        .IsRequired()
                         .HasMaxLength(1250)
                         .HasColumnType("nvarchar(1250)");
 
@@ -988,7 +970,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FbUrl")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -998,7 +979,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("GoogleUrl")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -1008,7 +988,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("InstagramUrl")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -1030,15 +1009,14 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("LinkedinUrl")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<int?>("RelationWithGroom")
                         .HasColumnType("int");
 
-                    b.Property<int>("WeddingId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("WeddingId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -1222,11 +1200,9 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.OrderDetail", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("uniqueidentifier");
@@ -1252,11 +1228,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("OrderID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("OrderMasterId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("OrderMasterId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -1264,11 +1240,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("SubscriptionMasterId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SubscriptionMasterId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("SubscrptionID")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("SubscrptionID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("TemplateID")
                         .HasColumnType("int");
@@ -1289,11 +1265,9 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.OrderMaster", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
@@ -1359,8 +1333,8 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<int?>("SGST")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -1369,14 +1343,11 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.RsvpDetail", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ComingFromCity")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -1393,7 +1364,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -1409,7 +1379,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -1426,17 +1395,14 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("MiddleName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Mobile")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -1446,7 +1412,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -1457,19 +1422,18 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("int");
 
                     b.Property<string>("SpecialNote")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<DateTime?>("ToDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("WeddingID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("WeddingId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("WeddingID");
+                    b.HasIndex("WeddingId");
 
                     b.ToTable("RsvpDetail", "Catalog");
                 });
@@ -1517,13 +1481,69 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.ToTable("RsvpSettings", "Catalog");
                 });
 
+            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.StoryTimeLine", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("LastModifiedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Location")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Story")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<DateTime>("StoryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid>("WeddingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WeddingId");
+
+                    b.ToTable("TimeLine", "Catalog");
+                });
+
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.SubscriptionMaster", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("uniqueidentifier");
@@ -1550,7 +1570,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SubsCode")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
@@ -1866,68 +1885,6 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.ToTable("TemplateMergeField", "Catalog");
                 });
 
-            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.TimeLine", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid?>("LastModifiedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Story")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<DateTime>("StoryDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("WeddingId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WeddingId");
-
-                    b.ToTable("TimeLine", "Catalog");
-                });
-
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.TimeLineSettings", b =>
                 {
                     b.Property<int>("Id")
@@ -1986,11 +1943,9 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.UserWeddingSubscription", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("uniqueidentifier");
@@ -2007,8 +1962,8 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("InvoiceNo")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("InvoiceNo")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -2019,19 +1974,18 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OrderMasterId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("OrderMasterId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ReasonOfUpdate")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SubscriptionMasterId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SubscriptionMasterId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("SubscriptionStatus")
                         .HasColumnType("int");
@@ -2051,8 +2005,8 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WeddingId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("WeddingId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -2110,13 +2064,141 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.ToTable("VenueSettings", "Catalog");
                 });
 
-            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", b =>
+            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingEvent", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("AboutEvent")
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)");
+
+                    b.Property<string>("BackGroundImage")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EventDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("LastModifiedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrganiserMobile")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("OrganiserName")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime?>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<Guid>("WeddingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WeddingId");
+
+                    b.ToTable("WeddingEvent", "Catalog");
+                });
+
+            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingGalleryImages", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateTaken")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("LastModifiedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Place")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid>("WeddingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WeddingId");
+
+                    b.ToTable("WeddingImages", "Catalog");
+                });
+
+            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("BackgroundImage")
                         .HasMaxLength(500)
@@ -2187,149 +2269,6 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.HasIndex("TemplateId");
 
                     b.ToTable("Wedding", "Catalog");
-                });
-
-            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingEvent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AboutEvent")
-                        .IsRequired()
-                        .HasMaxLength(1500)
-                        .HasColumnType("nvarchar(1500)");
-
-                    b.Property<string>("BackGroundImage")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("EventDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid?>("LastModifiedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("OrganiserMobile")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("OrganiserName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<DateTime?>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<int>("WeddingId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WeddingId");
-
-                    b.ToTable("WeddingEvent", "Catalog");
-                });
-
-            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingGalleryImages", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateTaken")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid?>("LastModifiedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Place")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("WeddingId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WeddingId");
-
-                    b.ToTable("WeddingImages", "Catalog");
                 });
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingTemplateSettings", b =>
@@ -2796,7 +2735,7 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.BrideAndMaid", b =>
                 {
-                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", "Wedding")
+                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", "Wedding")
                         .WithMany("BrideAndMaids")
                         .HasForeignKey("WeddingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2816,7 +2755,7 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.GroomAndMan", b =>
                 {
-                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", "Wedding")
+                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", "Wedding")
                         .WithMany("GroomAndMen")
                         .HasForeignKey("WeddingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2873,9 +2812,20 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.RsvpDetail", b =>
                 {
-                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", "Wedding")
+                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", "Wedding")
                         .WithMany("RsvpDetails")
-                        .HasForeignKey("WeddingID")
+                        .HasForeignKey("WeddingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Wedding");
+                });
+
+            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.StoryTimeLine", b =>
+                {
+                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", "Wedding")
+                        .WithMany("TimeLines")
+                        .HasForeignKey("WeddingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2926,17 +2876,6 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Navigation("TemplateMaster");
                 });
 
-            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.TimeLine", b =>
-                {
-                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", "Wedding")
-                        .WithMany("TimeLines")
-                        .HasForeignKey("WeddingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Wedding");
-                });
-
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.UserWeddingSubscription", b =>
                 {
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.OrderMaster", "OrderMaster")
@@ -2957,7 +2896,7 @@ namespace Migrators.MSSQL.Migrations.Application
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", "Wedding")
+                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", "Wedding")
                         .WithMany("UserWeddingSubscriptions")
                         .HasForeignKey("WeddingId");
 
@@ -2970,18 +2909,9 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Navigation("Wedding");
                 });
 
-            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", b =>
-                {
-                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.TemplateMaster", "Template")
-                        .WithMany()
-                        .HasForeignKey("TemplateId");
-
-                    b.Navigation("Template");
-                });
-
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingEvent", b =>
                 {
-                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", "Wedding")
+                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", "Wedding")
                         .WithMany("WeddingEvents")
                         .HasForeignKey("WeddingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2992,13 +2922,22 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingGalleryImages", b =>
                 {
-                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", "Wedding")
+                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", "Wedding")
                         .WithMany("WeddingGalleries")
                         .HasForeignKey("WeddingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Wedding");
+                });
+
+            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", b =>
+                {
+                    b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.TemplateMaster", "Template")
+                        .WithMany()
+                        .HasForeignKey("TemplateId");
+
+                    b.Navigation("Template");
                 });
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingTemplateSettings", b =>
@@ -3187,7 +3126,13 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Navigation("UserWeddingSubscriptions");
                 });
 
-            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.Wedding", b =>
+            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingEvent", b =>
+                {
+                    b.Navigation("Venue")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingMaster", b =>
                 {
                     b.Navigation("BrideAndMaids");
 
@@ -3202,12 +3147,6 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Navigation("WeddingEvents");
 
                     b.Navigation("WeddingGalleries");
-                });
-
-            modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingEvent", b =>
-                {
-                    b.Navigation("Venue")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

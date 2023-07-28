@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace DreamWedds.Manager.Domain.Entities.DreamWedds
 {
 
-    public partial class OrderMaster : AuditableEntity<int>
+    public partial class OrderMaster : AuditableEntity, IAggregateRoot
     {
         public OrderMaster()
         {
@@ -11,7 +11,7 @@ namespace DreamWedds.Manager.Domain.Entities.DreamWedds
             this.UserWeddingSubscriptions = new HashSet<UserWeddingSubscription>();
         }
         [Required]
-        public int UserID { get; set; }
+        public Guid UserID { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime? RequiredDate { get; set; }
         [MaxLength(50)]

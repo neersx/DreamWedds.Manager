@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DreamWedds.Manager.Domain.Entities.DreamWedds
 {
-    public partial class SubscriptionMaster : AuditableEntity<int>
+    public class SubscriptionMaster : AuditableEntity, IAggregateRoot
     {
         public SubscriptionMaster()
         {
@@ -14,7 +14,7 @@ namespace DreamWedds.Manager.Domain.Entities.DreamWedds
         [MaxLength(100)]
         public string SubsName { get; set; }
         [MaxLength(10)]
-        public string SubsCode { get; set; }
+        public string? SubsCode { get; set; }
         public int Days { get; set; }
     
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

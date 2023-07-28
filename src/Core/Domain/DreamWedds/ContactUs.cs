@@ -2,7 +2,7 @@
 
 namespace DreamWedds.Manager.Domain.Entities.DreamWedds
 {
-    public class ContactUs : AuditableEntity<int>
+    public class ContactUs : AuditableEntity<int>, IAggregateRoot
     {
         [MaxLength(50)]
         public string FirstName { get; set; }

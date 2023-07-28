@@ -5,9 +5,7 @@ namespace DreamWedds.Manager.Application.Blogs;
 public class UpdateBlogRequest : IRequest<Guid>
 {
     public Guid Id { get; set; }
-    public string BlogName { get; set; }
     public string Title { get; set; }
-    public string? BlogSubject { get; set; }
     public string? Quote { get; set; }
     public string? AuthorName { get; set; }
     public string Content { get; set; }
@@ -36,7 +34,7 @@ public class UpdateBlogRequestHandler : IRequestHandler<UpdateBlogRequest, Guid>
         {
             string blogImagePath = await _file.UploadAsync<Blog>(request.Image, FileType.Image, cancellationToken);
 
-            var blog = new Blog(request.BlogName, request.Content, request.BlogType, blogImagePath);
+            var blog = new Blog(request.Title, request.Content, request.BlogType, blogImagePath);
 
             // Add Domain Events to be raised after the commit
             blog.DomainEvents.Add(EntityCreatedEvent.WithEntity(blog));
@@ -63,7 +61,7 @@ public class UpdateBlogRequestHandler : IRequestHandler<UpdateBlogRequest, Guid>
             ? await _file.UploadAsync<Blog>(request.Image, FileType.Image, cancellationToken)
             : null;
 
-        var updatedBlog = Blog.Update(request.BlogName, request.Content, request.BlogType, BlogImagePath);
+        var updatedBlog = Blog.Update(request.Title, request.Content, request.BlogType, BlogImagePath);
 
         // Add Domain Events to be raised after the commit
         Blog.DomainEvents.Add(EntityUpdatedEvent.WithEntity(Blog));

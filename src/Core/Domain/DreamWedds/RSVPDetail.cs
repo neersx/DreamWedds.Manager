@@ -2,38 +2,37 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DreamWedds.Manager.Domain.Entities.DreamWedds
 {
-    public class RsvpDetail : AuditableEntity<int>
+    public class RsvpDetail : AuditableEntity, IAggregateRoot
     {
         [MaxLength(100)]
         [Required]
         public string FirstName { get; set; }
         [MaxLength(100)]
-        public string MiddleName { get; set; }
+        public string? MiddleName { get; set; }
         [MaxLength(100)]
-        [Required]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         public bool IsComing { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }
         public int? GuestCount { get; set; }
         public byte PreferredFood { get; set; }
         [MaxLength(150)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [MaxLength(15)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
         [MaxLength(15)]
-        public string Mobile { get; set; }
+        public string? Mobile { get; set; }
         [MaxLength(1000)]
-        public string SpecialNote { get; set; }
+        public string? SpecialNote { get; set; }
         [MaxLength(500)]
-        public string ImageUrl { get; set; }
-        public int WeddingID { get; set; }
+        public string? ImageUrl { get; set; }
+        public Guid WeddingId { get; set; }
         [MaxLength(150)]
         public string ParticipatingInEvents { get; set; }
         [MaxLength(150)]
-        public string ComingFromCity { get; set; }
+        public string? ComingFromCity { get; set; }
         public int? PreferredStayIn { get; set; }
     
-        public virtual Wedding Wedding { get; set; }
+        public virtual WeddingMaster Wedding { get; set; }
     }
 }

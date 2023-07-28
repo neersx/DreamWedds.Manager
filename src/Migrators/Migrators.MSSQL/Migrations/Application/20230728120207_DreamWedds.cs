@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Migrators.MSSQL.Migrations.Application
 {
     /// <inheritdoc />
-    public partial class dreamwedds : Migration
+    public partial class DreamWedds : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,6 +31,40 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Identity",
                 table: "RoleClaims");
 
+            migrationBuilder.AlterColumn<Guid>(
+                name: "LastModifiedBy",
+                schema: "Catalog",
+                table: "Products",
+                type: "uniqueidentifier",
+                nullable: true,
+                oldClrType: typeof(Guid),
+                oldType: "uniqueidentifier");
+
+            migrationBuilder.AddColumn<bool>(
+                name: "IsDeleted",
+                schema: "Catalog",
+                table: "Products",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
+
+            migrationBuilder.AlterColumn<Guid>(
+                name: "LastModifiedBy",
+                schema: "Catalog",
+                table: "Brands",
+                type: "uniqueidentifier",
+                nullable: true,
+                oldClrType: typeof(Guid),
+                oldType: "uniqueidentifier");
+
+            migrationBuilder.AddColumn<bool>(
+                name: "IsDeleted",
+                schema: "Catalog",
+                table: "Brands",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
+
             migrationBuilder.CreateTable(
                 name: "BannerSettings",
                 schema: "Catalog",
@@ -50,10 +84,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     CssStyle = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -75,10 +110,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     ContainText = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -94,7 +130,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     BlogName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Title = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     BlogSubject = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    Quote = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Quote = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     AuthorName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
@@ -102,10 +138,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     SpecialNote = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -125,10 +162,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     ContainsSocialBio = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -151,10 +189,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     ContactFor = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -177,10 +216,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     CssStyle = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -200,10 +240,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     MaxEventsCount = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -217,18 +258,19 @@ namespace Migrators.MSSQL.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Question = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Website = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Question = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Answer = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Website = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     IsMainQue = table.Column<bool>(type: "bit", nullable: false),
                     ParentQuestionId = table.Column<int>(type: "int", nullable: true),
                     Sequence = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -250,10 +292,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     MaxImagesCount = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -271,10 +314,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     IsBackgroundImage = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -294,10 +338,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     ContainsSocialBio = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -317,10 +362,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     CanSendEmail = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -332,9 +378,8 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RequiredDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     OrderStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -349,10 +394,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     OderNote = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -371,10 +417,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     CanUploadGuestList = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -386,18 +433,18 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SubsType = table.Column<int>(type: "int", nullable: false),
                     SubsName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    SubsCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    SubsCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     Days = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -419,10 +466,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     ContainsEndTitle = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -441,10 +489,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     LocationMapEnabled = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -460,18 +509,19 @@ namespace Migrators.MSSQL.Migrations.Application
                     Comment = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
                     BlogId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     IsHtml = table.Column<bool>(type: "bit", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsApproved = table.Column<bool>(type: "bit", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     BlogId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -511,10 +561,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     RsvpSettingsId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -616,24 +667,25 @@ namespace Migrators.MSSQL.Migrations.Application
                     Type = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Subject = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    Tags = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    TemplateUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    TemplateFolderPath = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    ThumbnailImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    TagLine = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    Tags = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    TemplateUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    TemplateFolderPath = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    ThumbnailImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    TagLine = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     Cost = table.Column<int>(type: "int", nullable: true),
-                    AuthorName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    AboutTemplate = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    Features = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    AuthorName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    AboutTemplate = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Features = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     TemplateCode = table.Column<int>(type: "int", nullable: true),
                     WeddingTemplateSettingsId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -654,23 +706,24 @@ namespace Migrators.MSSQL.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Property = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    TagPrefix = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PageName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    PageTitle = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Property = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    TagPrefix = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PageName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    PageTitle = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     IsImage = table.Column<bool>(type: "bit", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    TypeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    TypeId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BlogId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TemplateId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -696,23 +749,23 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Discount = table.Column<int>(type: "int", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OrderID = table.Column<int>(type: "int", nullable: false),
+                    OrderID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TemplateID = table.Column<int>(type: "int", nullable: false),
-                    SubscrptionID = table.Column<int>(type: "int", nullable: true),
-                    OrderMasterId = table.Column<int>(type: "int", nullable: false),
-                    SubscriptionMasterId = table.Column<int>(type: "int", nullable: false),
+                    SubscrptionID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    OrderMasterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SubscriptionMasterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TemplateMasterId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -757,10 +810,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     Icon = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -792,10 +846,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     TemplateMasterId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -825,10 +880,11 @@ namespace Migrators.MSSQL.Migrations.Application
                     TemplateMasterId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -847,26 +903,26 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     WeddingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     WeddingStyle = table.Column<int>(type: "int", nullable: false),
-                    IconUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    IconUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     TemplateId = table.Column<int>(type: "int", nullable: true),
                     IsLoveMarriage = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    BackgroundImage = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Quote = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    FbPageUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    VideoUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    BackgroundImage = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Quote = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    FbPageUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    VideoUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -884,26 +940,26 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DateofBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    WeddingId = table.Column<int>(type: "int", nullable: false),
+                    WeddingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsBride = table.Column<bool>(type: "bit", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     RelationWithBride = table.Column<int>(type: "int", nullable: true),
-                    About = table.Column<string>(type: "nvarchar(1250)", maxLength: 1250, nullable: false),
-                    FbUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    GoogleUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    InstagramUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    LinkedinUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    About = table.Column<string>(type: "nvarchar(1250)", maxLength: 1250, nullable: true),
+                    FbUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    GoogleUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    InstagramUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    LinkedinUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -922,26 +978,26 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DateofBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    WeddingId = table.Column<int>(type: "int", nullable: false),
+                    WeddingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsGroom = table.Column<bool>(type: "bit", nullable: false),
                     RelationWithGroom = table.Column<int>(type: "int", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    About = table.Column<string>(type: "nvarchar(1250)", maxLength: 1250, nullable: false),
-                    FbUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    GoogleUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    InstagramUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    LinkedinUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    About = table.Column<string>(type: "nvarchar(1250)", maxLength: 1250, nullable: true),
+                    FbUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    GoogleUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    InstagramUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    LinkedinUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -960,38 +1016,38 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    MiddleName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    MiddleName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     IsComing = table.Column<bool>(type: "bit", nullable: false),
                     FromDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ToDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     GuestCount = table.Column<int>(type: "int", nullable: true),
                     PreferredFood = table.Column<byte>(type: "tinyint", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    Mobile = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    SpecialNote = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    WeddingID = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Mobile = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    SpecialNote = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    WeddingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ParticipatingInEvents = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    ComingFromCity = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    ComingFromCity = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
                     PreferredStayIn = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RsvpDetail", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RsvpDetail_Wedding_WeddingID",
-                        column: x => x.WeddingID,
+                        name: "FK_RsvpDetail_Wedding_WeddingId",
+                        column: x => x.WeddingId,
                         principalSchema: "Catalog",
                         principalTable: "Wedding",
                         principalColumn: "Id",
@@ -1003,20 +1059,20 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StoryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Story = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    WeddingId = table.Column<int>(type: "int", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Story = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    WeddingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1035,27 +1091,27 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     TemplateId = table.Column<int>(type: "int", nullable: false),
-                    InvoiceNo = table.Column<int>(type: "int", nullable: true),
-                    WeddingId = table.Column<int>(type: "int", nullable: true),
+                    InvoiceNo = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    WeddingId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     SubscriptionType = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ReasonOfUpdate = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    ReasonOfUpdate = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     SubscriptionStatus = table.Column<int>(type: "int", nullable: false),
-                    OrderMasterId = table.Column<int>(type: "int", nullable: false),
-                    SubscriptionMasterId = table.Column<int>(type: "int", nullable: false),
+                    OrderMasterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SubscriptionMasterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TemplateMasterId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1094,25 +1150,25 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EventDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    OrganiserName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    OrganiserMobile = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    OrganiserName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    OrganiserMobile = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Title = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    WeddingId = table.Column<int>(type: "int", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    WeddingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AboutEvent = table.Column<string>(type: "nvarchar(1500)", maxLength: 1500, nullable: false),
-                    BackGroundImage = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    AboutEvent = table.Column<string>(type: "nvarchar(1500)", maxLength: 1500, nullable: true),
+                    BackGroundImage = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1131,20 +1187,20 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    WeddingId = table.Column<int>(type: "int", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    WeddingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     DateTaken = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Place = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Place = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1163,28 +1219,28 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    BannerImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Website = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    OwnerName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    Mobile = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    WeddingEventId = table.Column<int>(type: "int", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    BannerImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Website = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    OwnerName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Mobile = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    WeddingEventId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    GoogleMapUrl = table.Column<string>(type: "nvarchar(1500)", maxLength: 1500, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    City = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    State = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PinCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    GoogleMapUrl = table.Column<string>(type: "nvarchar(1500)", maxLength: 1500, nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    City = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    State = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    PinCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeletedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -1246,10 +1302,10 @@ namespace Migrators.MSSQL.Migrations.Application
                 column: "TemplateMasterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RsvpDetail_WeddingID",
+                name: "IX_RsvpDetail_WeddingId",
                 schema: "Catalog",
                 table: "RsvpDetail",
-                column: "WeddingID");
+                column: "WeddingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TemplateComments_TemplateId",
@@ -1543,6 +1599,16 @@ namespace Migrators.MSSQL.Migrations.Application
                 name: "VenueSettings",
                 schema: "Catalog");
 
+            migrationBuilder.DropColumn(
+                name: "IsDeleted",
+                schema: "Catalog",
+                table: "Products");
+
+            migrationBuilder.DropColumn(
+                name: "IsDeleted",
+                schema: "Catalog",
+                table: "Brands");
+
             migrationBuilder.AddColumn<string>(
                 name: "Description",
                 schema: "Identity",
@@ -1570,6 +1636,28 @@ namespace Migrators.MSSQL.Migrations.Application
                 table: "RoleClaims",
                 type: "datetime2",
                 nullable: true);
+
+            migrationBuilder.AlterColumn<Guid>(
+                name: "LastModifiedBy",
+                schema: "Catalog",
+                table: "Products",
+                type: "uniqueidentifier",
+                nullable: false,
+                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"),
+                oldClrType: typeof(Guid),
+                oldType: "uniqueidentifier",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<Guid>(
+                name: "LastModifiedBy",
+                schema: "Catalog",
+                table: "Brands",
+                type: "uniqueidentifier",
+                nullable: false,
+                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"),
+                oldClrType: typeof(Guid),
+                oldType: "uniqueidentifier",
+                oldNullable: true);
         }
     }
 }

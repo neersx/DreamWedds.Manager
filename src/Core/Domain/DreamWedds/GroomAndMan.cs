@@ -2,31 +2,31 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DreamWedds.Manager.Domain.Entities.DreamWedds
 {
-    public partial class GroomAndMan : AuditableEntity<int>
+    public class GroomAndMan : AuditableEntity, IAggregateRoot
     {
         [Required]
         [MaxLength(100)]
         public string FirstName { get; set; }
         [Required]
         [MaxLength(100)]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         public DateTime? DateofBirth { get; set; }
-        public int WeddingId { get; set; }
+        public Guid WeddingId { get; set; }
         public bool IsGroom { get; set; }
         public int? RelationWithGroom { get; set; }
         [MaxLength(1000)]
         public string ImageUrl { get; set; }
         [MaxLength(1250)]
-        public string About { get; set; }
+        public string? About { get; set; }
         [MaxLength(250)]
-        public string FbUrl { get; set; }
+        public string? FbUrl { get; set; }
         [MaxLength(500)]
-        public string GoogleUrl { get; set; }
+        public string? GoogleUrl { get; set; }
         [MaxLength(250)]
-        public string InstagramUrl { get; set; }
+        public string? InstagramUrl { get; set; }
         [MaxLength(250)]
-        public string LinkedinUrl { get; set; }
+        public string? LinkedinUrl { get; set; }
 
-        public virtual Wedding Wedding { get; set; }
+        public virtual WeddingMaster Wedding { get; set; }
     }
 }

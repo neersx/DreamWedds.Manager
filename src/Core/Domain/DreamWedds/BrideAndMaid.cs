@@ -2,16 +2,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DreamWedds.Manager.Domain.Entities.DreamWedds
 {
-    public partial class BrideAndMaid : AuditableEntity<int>
+    public class BrideAndMaid : AuditableEntity, IAggregateRoot
     {
         [Required]
         [MaxLength(100)]
         public string FirstName { get; set; }
         [Required]
         [MaxLength(100)]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         public DateTime? DateofBirth { get; set; }
-        public int WeddingId { get; set; }
+        public Guid WeddingId { get; set; }
         public bool IsBride { get; set; } = false;
         [MaxLength(250)]
         public string? ImageUrl { get; set; }
@@ -27,6 +27,6 @@ namespace DreamWedds.Manager.Domain.Entities.DreamWedds
         [MaxLength(250)]
         public string? LinkedinUrl { get; set; }
 
-        public virtual Wedding Wedding { get; set; }
+        public virtual WeddingMaster Wedding { get; set; }
     }
 }

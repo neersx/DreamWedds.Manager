@@ -34,6 +34,7 @@ namespace DreamWedds.Manager.Domain.Entities.DreamWedds
         {
             BlogName = title.Replace(" ", "-").ToLower();
             Title = title;
+            BlogSubject = title;
             Content = description;
             BlogType = type;
             ImageUrl = imagePath;

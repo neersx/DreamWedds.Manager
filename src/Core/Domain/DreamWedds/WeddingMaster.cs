@@ -2,14 +2,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DreamWedds.Manager.Domain.Entities.DreamWedds
 {
-    public partial class Wedding : AuditableEntity<int>, IAggregateRoot
+    public class WeddingMaster : AuditableEntity, IAggregateRoot
     {
-        public Wedding()
+        public WeddingMaster()
         {
             this.BrideAndMaids = new HashSet<BrideAndMaid>();
             this.GroomAndMen = new HashSet<GroomAndMan>();
             this.RsvpDetails = new HashSet<RsvpDetail>();
-            this.TimeLines = new HashSet<TimeLine>();
+            this.TimeLines = new HashSet<StoryTimeLine>();
             this.UserWeddingSubscriptions = new HashSet<UserWeddingSubscription>();
             this.WeddingEvents = new HashSet<WeddingEvent>();
             this.WeddingGalleries = new HashSet<WeddingGalleryImages>();
@@ -37,7 +37,7 @@ namespace DreamWedds.Manager.Domain.Entities.DreamWedds
         public virtual ICollection<BrideAndMaid> BrideAndMaids { get; set; }
         public virtual ICollection<GroomAndMan> GroomAndMen { get; set; }
         public virtual ICollection<RsvpDetail> RsvpDetails { get; set; }
-        public virtual ICollection<TimeLine> TimeLines { get; set; }
+        public virtual ICollection<StoryTimeLine> TimeLines { get; set; }
         public virtual ICollection<UserWeddingSubscription> UserWeddingSubscriptions { get; set; }
         public virtual ICollection<WeddingEvent> WeddingEvents { get; set; }
         public virtual ICollection<WeddingGalleryImages> WeddingGalleries { get; set; }

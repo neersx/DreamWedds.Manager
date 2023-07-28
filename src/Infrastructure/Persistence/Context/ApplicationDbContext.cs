@@ -34,10 +34,10 @@ public class ApplicationDbContext : BaseDbContext
     public DbSet<TemplateMaster> TemplateMaster { get; set; }
     public DbSet<TemplateComments> TemplateComments { get; set; }
     public DbSet<TemplateMergeField> TemplateMergeField { get; set; }
-    public DbSet<TimeLine> TimeLine { get; set; }
+    public DbSet<StoryTimeLine> TimeLine { get; set; }
     public DbSet<UserWeddingSubscription> UserWeddingSubscription { get; set; }
     public DbSet<EventVenue> Venue { get; set; }
-    public DbSet<Wedding> Wedding { get; set; }
+    public DbSet<WeddingMaster> Wedding { get; set; }
     public DbSet<WeddingEvent> WeddingEvent { get; set; }
     public DbSet<WeddingGalleryImages> WeddingImages { get; set; }
     public DbSet<MetaTags> MetaTags { get; set; }
