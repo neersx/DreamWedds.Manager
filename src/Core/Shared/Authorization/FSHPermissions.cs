@@ -28,6 +28,7 @@ public static class FSHResource
     public const string Brands = nameof(Brands);
     public const string Blogs = nameof(Blogs);
     public const string Templates = nameof(Templates);
+    public const string Wedding = nameof(Wedding);
 }
 
 public static class FSHPermissions
