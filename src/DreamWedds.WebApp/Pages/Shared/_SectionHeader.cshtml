@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <h2>@ViewData["SectionTitle"]</h2>
+        <p>@ViewData["SectionSubTitle"]</p>
+    </div>
+    @if (!string.IsNullOrEmpty(ViewData["IsActionButton"]?.ToString()))
+    {
+        <div class="col-lg-6 text-end d-flex flex-column justify-content-center">
+            <button type="button" class="btn bg-gradient-warning mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Contact Us</button>
+        </div>
+    }
+</div>
+<hr />
