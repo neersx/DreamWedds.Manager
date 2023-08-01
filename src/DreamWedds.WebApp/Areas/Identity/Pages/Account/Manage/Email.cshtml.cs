@@ -88,6 +88,8 @@ namespace DreamWedds.WebApp.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
+            ViewData["SectionTitle"] = "Manage Account";
+            ViewData["SectionSubTitle"] = "Complete your profile or makes changes to any profile information.";
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {

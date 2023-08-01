@@ -9,11 +9,12 @@
     }
 }
 
-<h1>Manage your account</h1>
 
+<section class="pt-3 pt-md-5 pb-md-5 pt-lg-7 bg-gray-200">
+    <div class="container">
+        <partial name="_SectionHeader" view-data="ViewData" />
 <div>
-    <h2>Change your account settings</h2>
-    <hr />
+  
     <div class="row">
         <div class="col-md-3">
             <partial name="_ManageNav" />
@@ -23,6 +24,8 @@
         </div>
     </div>
 </div>
+    </div>
+</section>
 
 @section Scripts {
     @RenderSection("Scripts", required: false)
