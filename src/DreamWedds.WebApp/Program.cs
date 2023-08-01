@@ -1,4 +1,5 @@
 using DreamWedds.WebApp.Data;
+using DreamWedds.WebApp.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,9 @@ builder.Services.AddAuthentication()
         facebookOptions.AppId = "705896946287834";
         facebookOptions.AppSecret = "75d30da91459c82eca35bbb6aa025b3e";
     });
+
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IApiService, ApiService>();
 
 var app = builder.Build();
 
