@@ -1,4 +1,5 @@
-﻿using DreamWedds.Manager.Application.Common.Models;
+﻿using DreamWedds.Manager.Application.Blogs;
+using DreamWedds.Manager.Application.Common.Models;
 using DreamWedds.Manager.Application.Template;
 using Newtonsoft.Json;
 using System.Text;
@@ -8,6 +9,8 @@ namespace DreamWedds.WebApp.Services;
 public interface IApiService
 {
     Task<PaginationResponse<TemplateDto>> GetWeddingTemplatesAsync(SearchTemplateRequest request);
+    Task<PaginationResponse<BlogDto>> GetBlogsAsync(SearchBlogRequest request);
+    Task<BlogDto> GetBlogByNameAsync(string name);
 }
 
 public class ApiService : IApiService
@@ -34,6 +37,41 @@ public class ApiService : IApiService
         {
             // Handle API call exception
             throw new Exception("Error calling third-party API.", ex);
+        }
+    }
+
+    public async Task<PaginationResponse<BlogDto>> GetBlogsAsync(SearchBlogRequest request)
+    {
+        try
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync($"{_httpClient.BaseAddress}/v1/blogs/search", content);
+            response.EnsureSuccessStatusCode();
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<PaginationResponse<BlogDto>>(responseContent);
+        }
+        catch (HttpRequestException ex)
+        {
+            // Handle API call exception
+            throw new Exception("Error getting blogs data.", ex);
+        }
+    }
+
+    public async Task<BlogDto> GetBlogByNameAsync(string name)
+    {
+        try
+        {
+            var response = await _httpClient.GetAsync($"{_httpClient.BaseAddress}/v1/blogs/{name}");
+            response.EnsureSuccessStatusCode();
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<BlogDto>(responseContent);
+        }
+        catch (HttpRequestException ex)
+        {
+            // Handle API call exception
+            throw new Exception("Error getting blogs data.", ex);
         }
     }
 }

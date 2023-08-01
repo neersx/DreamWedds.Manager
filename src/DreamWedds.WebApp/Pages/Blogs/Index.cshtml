@@ -1,0 +1,86 @@
+﻿@page
+@model DreamWedds.WebApp.Pages.Blogs.IndexModel
+@{
+}
+
+<br>
+<section class="py-5 mt-2">
+    <div class="container">
+        <div class="row">
+            @{
+                int i = 1;
+            }
+            @foreach (var blog in Model.Blogs)
+            {
+                if (i % 2 == 0)
+                {
+                    <div class="col-lg-12 mt-5 mb-5">
+                        <div class="row">
+                            <div class="col-lg-6 justify-content-center d-flex flex-column">
+                                <div class="card rounded-3">
+                                    <div class="d-block blur-shadow-image">
+                                        <img src="@blog.ImageUrl"
+                                            alt="img-blur-shadow-blog-2" class="img-fluid shadow rounded-3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 justify-content-center d-flex flex-column ps-lg-5 pt-lg-0 pt-3">
+                                <h6 class="category text-info">Wedding</h6>
+                                <h3>
+                                    <a asp-page="/blogs/details" asp-route-name="@blog.BlogName"
+                                        class="text-darker">@blog.Title</a>
+                                </h3>
+                                <p>
+                                    @(blog.SpecialNote.Substring(0, 200))… <a asp-page="/blogs/details"
+                                        asp-route-name="@blog.BlogName"
+                                        class="text-darker icon-move-right text-sm">
+                                        Read More
+                                        <i class="fas fa-arrow-right text-xs ms-1"></i>
+                                    </a>
+                                </p>
+                                <p class="author">
+                                    by <a href="javascript:;" class="ms-1"><span class="font-weight-bold text-info">@blog.AuthorName</span></a>, @((DateTime.Now.Date - blog.CreatedOn.Date).Days) days ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-lg-12 mt-5">
+                        <div class="row flex-row-reverse">
+                            <div class="col-lg-6 justify-content-center d-flex flex-column">
+                                <div class="card rounded-3">
+                                    <div class="blur-shadow-image">
+                                        <img src="@blog.ImageUrl" alt="img-blur-shadow-blog-2"
+                                            class="img-fluid shadow rounded-3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pe-lg-5 justify-content-center d-flex flex-column pt-lg-0 pt-3">
+                                <h6 class="category text-info mt-3">Wedding</h6>
+                                <h3>
+                                    <a asp-page="/blogs/details" asp-route-name="@blog.BlogName"
+                                        class="text-darker">@blog.Title</a>
+                                </h3>
+                                <p>
+                                    @blog.SpecialNote.Substring(0,200))… <a asp-page="/blogs/details"
+                                    asp-route-name="@blog.BlogName"
+                                        class="text-darker icon-move-right text-sm">
+                                        Read More
+                                        <i class="fas fa-arrow-right text-xs ms-1"></i>
+                                    </a>
+                                </p>
+                                <p class="author">
+                                    by <a href="javascript:;" class="ms-1"><span class="font-weight-bold text-info">@blog.AuthorName</span></a>, @((DateTime.Now.Date - blog.CreatedOn.Date).Days) days ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+                i++;
+            }
+
+        </div>
+    </div>
+</section>
