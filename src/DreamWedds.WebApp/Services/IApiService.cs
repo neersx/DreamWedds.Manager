@@ -1,6 +1,7 @@
 ﻿using DreamWedds.Manager.Application.Common.Models;
 using DreamWedds.Manager.Application.Template;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace DreamWedds.WebApp.Services;
 
@@ -16,18 +17,18 @@ public class ApiService : IApiService
     public ApiService(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        _httpClient.BaseAddress = new Uri("https://localhost:5001/v1");
+        _httpClient.BaseAddress = new Uri("https://localhost:5001/api");
     }
     public async Task<PaginationResponse<TemplateDto>> GetWeddingTemplatesAsync(SearchTemplateRequest request)
     {
         try
         {
-            var response = await _httpClient.GetAsync("https://localhost:5001/v1/template/search");
+            var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync($"{_httpClient.BaseAddress}/v1/templates/search", content);
             response.EnsureSuccessStatusCode();
 
             var responseContent = await response.Content.ReadAsStringAsync();
-            var apiResponse = JsonConvert.DeserializeObject<PaginationResponse<TemplateDto>>(responseContent);
-            return apiResponse;
+            return JsonConvert.DeserializeObject<PaginationResponse<TemplateDto>>(responseContent);
         }
         catch (HttpRequestException ex)
         {

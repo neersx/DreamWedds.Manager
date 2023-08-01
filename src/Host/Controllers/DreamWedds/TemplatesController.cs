@@ -16,7 +16,7 @@ public class TemplatesController : VersionedApiController
     }
 
     [HttpGet("{id}")]
-    [MustHavePermission(FSHAction.View, FSHResource.Templates)]
+    [AllowAnonymous]
     [OpenApiOperation("Get blog details.", "")]
     public Task<TemplateDto> GetAsync(int id)
     {

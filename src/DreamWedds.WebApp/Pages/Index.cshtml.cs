@@ -15,12 +15,12 @@ public class IndexModel : PageModel
         _apiService = apiService;
     }
 
-    public async Task OnGetAsyc()
+    public async Task OnGet()
     {
         _logger.LogInformation("On Get Async");
         var request = new SearchTemplateRequest() { PageNumber = 1, PageSize = 20 };
         var templates = await _apiService.GetWeddingTemplatesAsync(request);
         _logger.LogInformation("Response: ", templates);
-        ViewData["Templates"] = templates.Data;
+        ViewData["Templates"] = templates.Data.Where(x => x.Type == 2).ToList().Take(4);
     }
 }

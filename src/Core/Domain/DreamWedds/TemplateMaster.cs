@@ -38,13 +38,14 @@ namespace DreamWedds.Manager.Domain.Entities.DreamWedds
         [MaxLength(500)]
         public string? Features { get; set; }
         public int? TemplateCode { get; set; }
+        public int? WeddingTemplateSettingsId { get; set; }
 
         public virtual ICollection<MetaTags> MetaTags { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ICollection<TemplateComments> Comments { get; set; }
         public virtual ICollection<TemplateImage> TemplateImages { get; set; }
         public virtual ICollection<TemplateMergeField> TemplateMergeFields { get; set; }
-        public virtual WeddingTemplateSettings WeddingTemplateSettings { get; set; }
+        public virtual WeddingTemplateSettings? WeddingTemplateSettings { get; set; }
         public virtual ICollection<UserWeddingSubscription> UserWeddingSubscriptions { get; set; }
     }
 }
