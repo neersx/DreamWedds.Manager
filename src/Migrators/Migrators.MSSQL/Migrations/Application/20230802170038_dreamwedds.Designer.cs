@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Migrators.MSSQL.Migrations.Application
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230728120207_DreamWedds")]
-    partial class DreamWedds
+    [Migration("20230802170038_dreamwedds")]
+    partial class dreamwedds
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -147,12 +147,10 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CssStyle")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("DefaultResolution")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -184,12 +182,10 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("int");
 
                     b.Property<string>("MaxResolution")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("Placement")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -234,7 +230,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageResolution")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -501,7 +496,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageResolution")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -527,14 +521,11 @@ namespace Migrators.MSSQL.Migrations.Application
 
             modelBuilder.Entity("DreamWedds.Manager.Domain.Entities.DreamWedds.ContactUs", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ContactFor")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
@@ -551,12 +542,10 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -570,22 +559,18 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Message")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("Mobile")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("Subject")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -603,7 +588,6 @@ namespace Migrators.MSSQL.Migrations.Application
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("BrideImageResolution")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -614,7 +598,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CssStyle")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -628,7 +611,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("bit");
 
                     b.Property<string>("GroomImageResolution")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -645,7 +627,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Placement")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -819,6 +800,9 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("FaqType")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -866,7 +850,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DefaultImagesCount")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("DeletedBy")
@@ -876,7 +859,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageResolution")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsBackgroundImage")
@@ -892,11 +874,9 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("MaxImageResolution")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MaxImagesCount")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Sequence")
@@ -1052,7 +1032,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageResolution")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -1085,7 +1064,6 @@ namespace Migrators.MSSQL.Migrations.Application
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("BackgroundColor")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -1815,7 +1793,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.Property<int>("WeddingTemplateSettingsId")
+                    b.Property<int?>("WeddingTemplateSettingsId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -1906,7 +1884,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DefaultResolution")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -1932,7 +1909,6 @@ namespace Migrators.MSSQL.Migrations.Application
                         .HasColumnType("datetime2");
 
                     b.Property<string>("MaxResolution")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -2283,26 +2259,24 @@ namespace Migrators.MSSQL.Migrations.Application
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("BackgroundImageResolution")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("BannerSettingsId")
+                    b.Property<int?>("BannerSettingsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BestManSettingsId")
+                    b.Property<int?>("BestManSettingsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BrideMaidSettingsId")
+                    b.Property<int?>("BrideMaidSettingsId")
                         .HasColumnType("int");
 
                     b.Property<bool>("ContainsFooter")
                         .HasColumnType("bit");
 
                     b.Property<string>("CopyRightText")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CoupleSettingsId")
+                    b.Property<int?>("CoupleSettingsId")
                         .HasColumnType("int");
 
                     b.Property<Guid>("CreatedBy")
@@ -2320,19 +2294,19 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<bool>("EnableNotification")
                         .HasColumnType("bit");
 
-                    b.Property<int>("EventsSettingsId")
+                    b.Property<int?>("EventsSettingsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GallerySettingsId")
+                    b.Property<int?>("GallerySettingsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GiftRegistrySettingsId")
+                    b.Property<int?>("GiftRegistrySettingsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GroomsMenSettingsId")
+                    b.Property<int?>("GroomsMenSettingsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("InvitationSettingsId")
+                    b.Property<int?>("InvitationSettingsId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -2347,13 +2321,13 @@ namespace Migrators.MSSQL.Migrations.Application
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RsvpSettingsId")
+                    b.Property<int?>("RsvpSettingsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TimeLineSettingsId")
+                    b.Property<int?>("TimeLineSettingsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("VenueSettingsId")
+                    b.Property<int?>("VenueSettingsId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -2861,9 +2835,7 @@ namespace Migrators.MSSQL.Migrations.Application
                 {
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.WeddingTemplateSettings", "WeddingTemplateSettings")
                         .WithMany()
-                        .HasForeignKey("WeddingTemplateSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WeddingTemplateSettingsId");
 
                     b.Navigation("WeddingTemplateSettings");
                 });
@@ -2947,75 +2919,51 @@ namespace Migrators.MSSQL.Migrations.Application
                 {
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.BannerSettings", "BannerSettings")
                         .WithMany()
-                        .HasForeignKey("BannerSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BannerSettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.BestManSettings", "BestManSettings")
                         .WithMany()
-                        .HasForeignKey("BestManSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BestManSettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.BrideMaidSettings", "BrideMaidSettings")
                         .WithMany()
-                        .HasForeignKey("BrideMaidSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BrideMaidSettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.CoupleSettings", "CoupleSettings")
                         .WithMany()
-                        .HasForeignKey("CoupleSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CoupleSettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.EventsSettings", "EventsSettings")
                         .WithMany()
-                        .HasForeignKey("EventsSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EventsSettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.GallerySettings", "GallerySettings")
                         .WithMany()
-                        .HasForeignKey("GallerySettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GallerySettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.GiftRegistrySettings", "GiftRegistrySettings")
                         .WithMany()
-                        .HasForeignKey("GiftRegistrySettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GiftRegistrySettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.GroomsMenSettings", "GroomsMenSettings")
                         .WithMany()
-                        .HasForeignKey("GroomsMenSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GroomsMenSettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.InvitationSettings", "InvitationSettings")
                         .WithMany()
-                        .HasForeignKey("InvitationSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InvitationSettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.RsvpSettings", "RsvpSettings")
                         .WithMany()
-                        .HasForeignKey("RsvpSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RsvpSettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.TimeLineSettings", "TimeLineSettings")
                         .WithMany()
-                        .HasForeignKey("TimeLineSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TimeLineSettingsId");
 
                     b.HasOne("DreamWedds.Manager.Domain.Entities.DreamWedds.VenueSettings", "VenueSettings")
                         .WithMany()
-                        .HasForeignKey("VenueSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VenueSettingsId");
 
                     b.Navigation("BannerSettings");
 

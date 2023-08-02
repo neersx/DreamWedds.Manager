@@ -19,7 +19,8 @@ public class FaqModel : PageModel
     public async Task OnGet()
     {
         var request = new SearchFaqRequest() { PageNumber = 1, PageSize = 20 };
-        var templates = await _apiService.GetFaqsAsync(request);
+        var faqs = await _apiService.GetFaqsAsync(request);
+        FaqList = faqs.Data;
 
         //var MetaTags = await _mediator.Send(new GetAllMetaTagsByPageNameQuery(KnownValues.KnownHtmlPage.Faq));
         //string MetagTagsString = HtmlPageExtensions.GetMetadataString(MetaTags.Data) ;

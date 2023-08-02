@@ -6,30 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Migrators.MSSQL.Migrations.Application
 {
     /// <inheritdoc />
-    public partial class DreamWedds : Migration
+    public partial class dreamwedds : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Description",
-                schema: "Identity",
-                table: "RoleClaims");
-
-            migrationBuilder.DropColumn(
-                name: "Group",
-                schema: "Identity",
-                table: "RoleClaims");
-
-            migrationBuilder.DropColumn(
-                name: "LastModifiedBy",
-                schema: "Identity",
-                table: "RoleClaims");
-
-            migrationBuilder.DropColumn(
-                name: "LastModifiedOn",
-                schema: "Identity",
-                table: "RoleClaims");
 
             migrationBuilder.AlterColumn<Guid>(
                 name: "LastModifiedBy",
@@ -39,14 +20,6 @@ namespace Migrators.MSSQL.Migrations.Application
                 nullable: true,
                 oldClrType: typeof(Guid),
                 oldType: "uniqueidentifier");
-
-            migrationBuilder.AddColumn<bool>(
-                name: "IsDeleted",
-                schema: "Catalog",
-                table: "Products",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
 
             migrationBuilder.AlterColumn<Guid>(
                 name: "LastModifiedBy",
@@ -73,15 +46,15 @@ namespace Migrators.MSSQL.Migrations.Application
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Sequence = table.Column<int>(type: "int", nullable: false),
-                    Placement = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    Placement = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     IsBackgroundImage = table.Column<bool>(type: "bit", nullable: false),
                     Width = table.Column<int>(type: "int", nullable: false),
                     Height = table.Column<int>(type: "int", nullable: false),
-                    DefaultResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    MaxResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    DefaultResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
+                    MaxResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     IsCarousel = table.Column<bool>(type: "bit", nullable: false),
                     MaxImages = table.Column<int>(type: "int", nullable: false),
-                    CssStyle = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    CssStyle = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -104,7 +77,7 @@ namespace Migrators.MSSQL.Migrations.Application
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Sequence = table.Column<int>(type: "int", nullable: false),
                     IsBackgroundImage = table.Column<bool>(type: "bit", nullable: false),
-                    ImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    ImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     ContainsSocialBio = table.Column<bool>(type: "bit", nullable: false),
                     ContainImage = table.Column<bool>(type: "bit", nullable: false),
                     ContainText = table.Column<bool>(type: "bit", nullable: false),
@@ -158,7 +131,7 @@ namespace Migrators.MSSQL.Migrations.Application
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Sequence = table.Column<int>(type: "int", nullable: false),
                     IsBackgroundImage = table.Column<bool>(type: "bit", nullable: false),
-                    ImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    ImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     ContainsSocialBio = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -178,15 +151,14 @@ namespace Migrators.MSSQL.Migrations.Application
                 schema: "Catalog",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Mobile = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    Message = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    Subject = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    ContactFor = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    Mobile = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Message = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Subject = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    ContactFor = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -209,11 +181,11 @@ namespace Migrators.MSSQL.Migrations.Application
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Sequence = table.Column<int>(type: "int", nullable: false),
                     IsBackgroundImage = table.Column<bool>(type: "bit", nullable: false),
-                    BrideImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    GroomImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    Placement = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    BrideImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
+                    GroomImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
+                    Placement = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     DisplayDescription = table.Column<bool>(type: "bit", nullable: false),
-                    CssStyle = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    CssStyle = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -264,6 +236,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     IsMainQue = table.Column<bool>(type: "bit", nullable: false),
                     ParentQuestionId = table.Column<int>(type: "int", nullable: true),
                     Sequence = table.Column<int>(type: "int", nullable: true),
+                    FaqType = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -286,10 +259,10 @@ namespace Migrators.MSSQL.Migrations.Application
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Sequence = table.Column<int>(type: "int", nullable: false),
                     IsBackgroundImage = table.Column<bool>(type: "bit", nullable: false),
-                    ImageResolution = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MaxImageResolution = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DefaultImagesCount = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MaxImagesCount = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageResolution = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MaxImageResolution = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DefaultImagesCount = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MaxImagesCount = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -334,7 +307,7 @@ namespace Migrators.MSSQL.Migrations.Application
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Sequence = table.Column<int>(type: "int", nullable: false),
                     IsBackgroundImage = table.Column<bool>(type: "bit", nullable: false),
-                    ImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    ImageResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     ContainsSocialBio = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -358,7 +331,7 @@ namespace Migrators.MSSQL.Migrations.Application
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Sequence = table.Column<int>(type: "int", nullable: false),
                     IsBackgroundImage = table.Column<bool>(type: "bit", nullable: false),
-                    BackgroundColor = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    BackgroundColor = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     CanSendEmail = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -461,8 +434,8 @@ namespace Migrators.MSSQL.Migrations.Application
                     Sequence = table.Column<int>(type: "int", nullable: false),
                     IsBackgroundImage = table.Column<bool>(type: "bit", nullable: false),
                     IsSingleSide = table.Column<bool>(type: "bit", nullable: false),
-                    DefaultResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    MaxResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    DefaultResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
+                    MaxResolution = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     ContainsEndTitle = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -542,23 +515,23 @@ namespace Migrators.MSSQL.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BackgroundImageResolution = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BackgroundImageResolution = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsMultiplePage = table.Column<bool>(type: "bit", nullable: false),
                     ContainsFooter = table.Column<bool>(type: "bit", nullable: false),
-                    CopyRightText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CopyRightText = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EnableNotification = table.Column<bool>(type: "bit", nullable: false),
-                    BannerSettingsId = table.Column<int>(type: "int", nullable: false),
-                    CoupleSettingsId = table.Column<int>(type: "int", nullable: false),
-                    BrideMaidSettingsId = table.Column<int>(type: "int", nullable: false),
-                    GroomsMenSettingsId = table.Column<int>(type: "int", nullable: false),
-                    BestManSettingsId = table.Column<int>(type: "int", nullable: false),
-                    TimeLineSettingsId = table.Column<int>(type: "int", nullable: false),
-                    InvitationSettingsId = table.Column<int>(type: "int", nullable: false),
-                    VenueSettingsId = table.Column<int>(type: "int", nullable: false),
-                    EventsSettingsId = table.Column<int>(type: "int", nullable: false),
-                    GiftRegistrySettingsId = table.Column<int>(type: "int", nullable: false),
-                    GallerySettingsId = table.Column<int>(type: "int", nullable: false),
-                    RsvpSettingsId = table.Column<int>(type: "int", nullable: false),
+                    BannerSettingsId = table.Column<int>(type: "int", nullable: true),
+                    CoupleSettingsId = table.Column<int>(type: "int", nullable: true),
+                    BrideMaidSettingsId = table.Column<int>(type: "int", nullable: true),
+                    GroomsMenSettingsId = table.Column<int>(type: "int", nullable: true),
+                    BestManSettingsId = table.Column<int>(type: "int", nullable: true),
+                    TimeLineSettingsId = table.Column<int>(type: "int", nullable: true),
+                    InvitationSettingsId = table.Column<int>(type: "int", nullable: true),
+                    VenueSettingsId = table.Column<int>(type: "int", nullable: true),
+                    EventsSettingsId = table.Column<int>(type: "int", nullable: true),
+                    GiftRegistrySettingsId = table.Column<int>(type: "int", nullable: true),
+                    GallerySettingsId = table.Column<int>(type: "int", nullable: true),
+                    RsvpSettingsId = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -575,85 +548,73 @@ namespace Migrators.MSSQL.Migrations.Application
                         column: x => x.BannerSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "BannerSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_BestManSettings_BestManSettingsId",
                         column: x => x.BestManSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "BestManSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_BrideMaidSettings_BrideMaidSettingsId",
                         column: x => x.BrideMaidSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "BrideMaidSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_CoupleSettings_CoupleSettingsId",
                         column: x => x.CoupleSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "CoupleSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_EventsSettings_EventsSettingsId",
                         column: x => x.EventsSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "EventsSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_GallerySettings_GallerySettingsId",
                         column: x => x.GallerySettingsId,
                         principalSchema: "Catalog",
                         principalTable: "GallerySettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_GiftRegistrySettings_GiftRegistrySettingsId",
                         column: x => x.GiftRegistrySettingsId,
                         principalSchema: "Catalog",
                         principalTable: "GiftRegistrySettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_GroomsMenSettings_GroomsMenSettingsId",
                         column: x => x.GroomsMenSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "GroomsMenSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_InvitationSettings_InvitationSettingsId",
                         column: x => x.InvitationSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "InvitationSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_RsvpSettings_RsvpSettingsId",
                         column: x => x.RsvpSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "RsvpSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_TimeLineSettings_TimeLineSettingsId",
                         column: x => x.TimeLineSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "TimeLineSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WeddingTemplateSettings_VenueSettings_VenueSettingsId",
                         column: x => x.VenueSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "VenueSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -678,7 +639,7 @@ namespace Migrators.MSSQL.Migrations.Application
                     AboutTemplate = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     Features = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     TemplateCode = table.Column<int>(type: "int", nullable: true),
-                    WeddingTemplateSettingsId = table.Column<int>(type: "int", nullable: false),
+                    WeddingTemplateSettingsId = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -695,8 +656,7 @@ namespace Migrators.MSSQL.Migrations.Application
                         column: x => x.WeddingTemplateSettingsId,
                         principalSchema: "Catalog",
                         principalTable: "WeddingTemplateSettings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

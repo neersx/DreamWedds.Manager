@@ -26,6 +26,8 @@ public class ApiService : IApiService
     {
         _httpClient = httpClient;
         _httpClient.BaseAddress = new Uri("https://localhost:5001/api");
+        _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+        _httpClient.DefaultRequestHeaders.Add("tenant", "root");
     }
     public async Task<PaginationResponse<TemplateDto>> GetWeddingTemplatesAsync(SearchTemplateRequest request)
     {
@@ -97,9 +99,22 @@ public class ApiService : IApiService
         }
     }
 
-    public Task<DefaultIdType> SubmitContactUsRequest(ContactUsRequest request)
+    public async Task<DefaultIdType> SubmitContactUsRequest(ContactUsRequest request)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync($"{_httpClient.BaseAddress}/v1/contactus", content);
+            response.EnsureSuccessStatusCode();
+
+            string responseContent = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<DefaultIdType>(responseContent);
+        }
+        catch (HttpRequestException ex)
+        {
+            // Handle API call exception
+            throw new Exception("Error getting blogs data.", ex);
+        }
     }
 
     public async Task<PaginationResponse<FaqDto>> GetFaqsAsync(SearchFaqRequest request)
