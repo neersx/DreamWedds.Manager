@@ -15,11 +15,19 @@ public class TemplatesController : VersionedApiController
         return Mediator.Send(request);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     [AllowAnonymous]
-    [OpenApiOperation("Get blog details.", "")]
+    [OpenApiOperation("Get template details.", "")]
     public Task<TemplateDto> GetAsync(int id)
     {
         return Mediator.Send(new GetTemplateRequest(id));
+    }
+
+    [HttpGet("{name}")]
+    [AllowAnonymous]
+    [OpenApiOperation("Get template details by tempate name.", "")]
+    public Task<TemplateDto> GetByNameAsync(string name)
+    {
+        return Mediator.Send(new GetTemplateByNameRequest(name));
     }
 }

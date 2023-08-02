@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DreamWedds.Manager.Domain.Entities.DreamWedds;
-
-public class ContactUs : AuditableEntity, IAggregateRoot
+namespace DreamWedds.Manager.Application.Contact;
+public class ContactUsRequest : IRequest<Guid>
 {
     [MaxLength(50)]
+    [Required]
     public string? FirstName { get; set; }
     [MaxLength(50)]
     public string? LastName { get; set; }
@@ -12,6 +12,7 @@ public class ContactUs : AuditableEntity, IAggregateRoot
     public string? Email { get; set; }
 
     [MaxLength(15)]
+    [Required]
     public string? Mobile { get; set; }
     [MaxLength(1000)]
     public string? Message { get; set; }
@@ -19,15 +20,4 @@ public class ContactUs : AuditableEntity, IAggregateRoot
     public string? Subject { get; set; }
     [MaxLength(20)]
     public string? ContactFor { get; set; } // Wedding, Billing, Account
-
-    public ContactUs(string firstName, string lastName, string message, string mobile, string? email)
-    {
-        FirstName = firstName;
-        LastName = lastName;
-        Message = message;
-        Email = email;
-        Mobile = mobile;
-        Subject= $"Contact Us form request from {firstName} {lastName}";
-        ContactFor = "Wedding";
-    }
 }

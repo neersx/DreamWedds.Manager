@@ -1,0 +1,210 @@
+﻿@page
+@model DreamWedds.WebApp.Pages.Themes.Weddings.DetailsModel
+@{
+}
+<br />
+<br />
+<br />
+<br />
+@section HeadBlock {
+
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="mb-4">@Model.Detail.Name | Theme Details</h5>
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-8 text-center">
+                            <div class="position-relative overflow-hidden">
+                                <div class="swiper mySwiper mt-4 mb-2">
+                                    <div class="swiper-wrapper">
+                                        @if (Model.Screenshots.Count > 0)
+                                        {
+                                            for (int j = 0; j < Model.Screenshots.Count; j++)
+                                            {
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <div class="card card-background shadow-none border-radius-xl card-background-after-none align-items-start mb-0">
+                                                            <div class="full-background bg-cover" style="background-image: url('@("/"+Model.ScreenshotFolder +"/"+ Model.Screenshots[j])')"></div>
+                                                            <div class="card-body text-start px-3 py-0 w-100">
+                                                                <div class="row mt-12">
+                                                                    <div class="col-sm-3 mt-auto">
+                                                                        <h4 class="text-primary text-gradient font-weight-bolder">#@(j + 1)</h4>
+                                                                        <p class="text-light  opacity-6 text-xs font-weight-bolder mb-0">@Model.Detail.Name</p>
+                                                                        <h5 class="text-warning text-gradient font-weight-bolder">Premium</h5>
+                                                                    </div>
+                                                                    <div class="col-sm-3 ms-auto mt-auto">
+                                                                        <p class="text-light opacity-6 text-xs font-weight-bolder mb-0">Category</p>
+                                                                        <h5 class="text-warning text-gradient font-weight-bolder">Wedding</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="swiper-slide">
+                                                <div>
+                                                    <div class="card card-background shadow-none border-radius-xl card-background-after-none align-items-start mb-0">
+                                                        <div class="full-background bg-cover" style="background-image: url('@Model.Detail.ThumbnailImageUrl')"></div>
+                                                        <div class="card-body text-start px-3 py-0 w-100">
+                                                            <div class="row mt-12">
+                                                                <div class="col-sm-3 mt-auto">
+                                                                    <h4 class="text-primary text-gradient font-weight-bolder">#1</h4>
+                                                                    <p class="text-light  opacity-6 text-xs font-weight-bolder mb-0">@Model.Detail.Name</p>
+                                                                    <h5 class="text-warning text-gradient font-weight-bolder">Premium</h5>
+                                                                </div>
+                                                                <div class="col-sm-3 ms-auto mt-auto">
+                                                                    <p class="text-light opacity-6 text-xs font-weight-bolder mb-0">Category</p>
+                                                                    <h5 class="text-warning text-gradient font-weight-bolder">Wedding</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </div>
+
+                            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+                                <div class="pswp__bg"></div>
+
+                                <div class="pswp__scroll-wrap">
+
+
+                                    <div class="pswp__container">
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                    </div>
+
+                                    <div class="pswp__ui pswp__ui--hidden">
+                                        <div class="pswp__top-bar">
+
+                                            <div class="pswp__counter"></div>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--close">
+                                                Close
+                                                (Esc)
+                                            </button>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--fs">
+                                                Fullscreen
+                                            </button>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--left">
+                                                Prev
+                                            </button>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--right">
+                                                Next
+                                            </button>
+
+
+                                            <div class="pswp__preloader">
+                                                <div class="pswp__preloader__icn">
+                                                    <div class="pswp__preloader__cut">
+                                                        <div class="pswp__preloader__donut"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                            <div class="pswp__share-tooltip"></div>
+                                        </div>
+                                        <div class="pswp__caption">
+                                            <div class="pswp__caption__center"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="mt-2">Features</label>
+                            <div class="col-md-12">
+                                @{
+                                    int i = 1;
+                                }
+                                @foreach (var tag in Model.Detail.Tags.Split(','))
+                                {
+                                    if (i % 2 == 0)
+                                    {
+                                        <span> •</span> <span class="badge badge-sm bg-gradient-warning">@tag</span>
+                                    }
+                                    else if (i % 3 == 0)
+                                    {
+                                        <span> •</span> <span class="badge badge-sm bg-gradient-info">@tag</span>
+                                    }
+                                    else
+                                    {
+                                        <span>• </span>
+
+                                        <span class="badge badge-sm bg-gradient-primary">@tag</span>
+                                    }
+                                    i++;
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 mx-auto">
+                            <h3 class="mt-lg-0 mt-4">@Model.Detail.Name</h3> | <span class="badge badge-success">Mobile Friendly</span>
+                            <div class="rating">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+                            </div>
+                            <br>
+                            <h6 class="mb-0 mt-3">Price</h6>
+                            <h5>INR. @Model.Detail.Cost</h5>
+
+                            <label class="mt-4">Description</label>
+                            <p> @Html.Raw(Model.Detail.AboutTemplate)</p>
+                            <ul>
+                                @foreach (var tag in Model.Detail.Tags.Split(','))
+                                {
+                                    <li>@tag</li>
+                                }
+                            </ul>
+                            <div class="row mt-4">
+                                <div class="col-lg-5">
+                                    <a href="contactus" class="btn bg-gradient-primary mb-0 mt-lg-auto w-100"
+                                            name="button">
+                                        Add to cart
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <!-- Mandatory init script -->
+    <script src="./assets/js/plugins/swiper-bundle.min.js" type="text/javascript"></script>
+    <script>
+        if (document.getElementsByClassName('mySwiper')) {
+            var swiper = new Swiper(".mySwiper", {
+                effect: "cards",
+                grabCursor: true,
+                initialSlide: 1,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        };
+
+    </script>
+}

@@ -19,7 +19,7 @@ public class DetailsModel : PageModel
     public async Task OnGetAsync(string name)
     {
         if (string.IsNullOrEmpty(name))
-            throw new Exception("Incorrect url");
+            throw new Exception("Incorrect Blog Name");
 
         Detail = await _apiService.GetBlogByNameAsync(name);
 
