@@ -4,5 +4,20 @@
     ViewData["Title"] = "Confirm email";
 }
 
-<h1>@ViewData["Title"]</h1>
-<partial name="_StatusMessage" model="Model.StatusMessage" />
+<!-- -------   START PRE-FOOTER 2 - simple social line w/ title & 3 buttons    -------- -->
+<div class="py-11">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h4 class="mb-1">Thank you for confirming your email!</h4>
+        <p class="lead mb-0">Please login into your account now.</p>
+      </div>
+      <div class="col-lg-6 d-flex align-items-center">
+        <a href="/identity/account/login" class="btn btn-primary btn-gradient mb-0 me-2">
+          <i class="fab fa-user me-1"></i> Login into account
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- -------   END PRE-FOOTER 2 - simple social line w/ title & 3 buttons    -------- -->
