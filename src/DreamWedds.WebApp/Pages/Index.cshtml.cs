@@ -17,10 +17,17 @@ public class IndexModel : PageModel
 
     public async Task OnGet()
     {
-        _logger.LogInformation("On Get Async");
-        var request = new SearchTemplateRequest() { PageNumber = 1, PageSize = 20 };
+        var request = new SearchTemplateRequest() { PageNumber = 1, PageSize = 4 };
         var templates = await _apiService.GetWeddingTemplatesAsync(request);
-        _logger.LogInformation("Response: ", templates);
-        ViewData["Templates"] = templates.Data.Where(x => x.Type == 2).ToList().Take(4);
+        ViewData["Templates"] = templates.Data.Where(x => x.Type == 2).ToList();
+    }
+
+    public async Task<PartialViewResult> OnGetTemplateData()
+    {
+        var request = new SearchTemplateRequest() { PageNumber = 1, PageSize = 4 };
+        var templates = await _apiService.GetWeddingTemplatesAsync(request);
+        var data = templates.Data.Where(x => x.Type == 2).ToList();
+        _logger.LogInformation("Data received");
+        return Partial("_QuickThemes", data);
     }
 }
